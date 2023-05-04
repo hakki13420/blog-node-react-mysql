@@ -1,0 +1,14 @@
+
+
+GET http://localhost:3000/posts
+
+
+###
+GET http://localhost:3000/posts?cat=1
+
+
+###
+GET http://localhost:3000/posts/23
+
+
+

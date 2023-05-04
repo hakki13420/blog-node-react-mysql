@@ -1,0 +1,446 @@
+$lightblue:lightblue;
+$transition:.4s ease all;
+
+@import './global';
+@import './functions';
+@import './mixin';
+
+
+.app{
+    .container{
+       margin: 0 auto;
+       width: rem(1200);
+    /*begin login*/    
+    .login, .register{
+        height: 100vh;
+        @include dflex(column, center, center, rem(10));
+        
+        h4{
+            font-size: 1.3rem;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: teal;
+        }
+        form{
+            @include dflex(column, unset, unset, rem(20));
+            background-color: $lightblue;
+            padding: rem(40);
+            width: rem(300);       
+        
+            input{
+                border: none;
+                border-bottom: 1px solid gray;
+                padding: rem(10);
+                outline: none;
+            }
+            button{
+                background-color: teal;
+                color: white;                
+                cursor: pointer;
+                padding: rem(7) rem(15);
+                border: none;
+                transition: $transition;
+                &:hover{
+                    opacity: 0.8;
+                    box-shadow: 0 2ps 3px #0000;
+                }
+            }
+            p{
+                color:red;
+                text-align: center;
+                font-size: 0.9rem;
+            }
+            span{
+                font-size: 0.9rem;
+                font-style: italic;
+                text-align: center;
+                margin: 1rem 0 0;
+            }
+        }        
+    }
+    /*end login*/
+    //navbar
+    .nav{
+        padding: rem(30);       
+        @include dflex(row, space-between, center, 0);
+        &__nav-left{
+            
+            &__logo{
+                position: relative;
+                font-size: 1.4rem;
+                &:before{
+                    content:"";
+                    position: absolute;
+                    top: -25px;
+                    left: rem(20);
+                    height: 6rem;
+                    width: 6rem;
+                    border-radius: 50%;
+                    background-color: $lightblue;
+                    z-index: -1;
+                }
+                .title{
+                    letter-spacing: 3px;
+                }
+                span{
+                    color: red;
+                }
+                .description{
+                    font-size: 0.7rem;
+                    color: gray;
+                    position: absolute;
+                    left: rem(20);
+                }
+            }
+        }
+        &__nav-right{
+            
+            &__links{
+                @include dflex(row, unset, center, rem(15));
+                .write{                    
+                    font-weight: 300;
+                    text-decoration: none;
+                    color: #555;
+                }
+                .write{
+                    background-color:$lightblue;
+                    cursor: pointer;
+                    color: white;
+                    font-weight: bold;
+                    transition: $transition;
+                    width: rem(50);
+                    height: rem(50);
+                    border-radius: 50%;
+                    @include dflex(row, center, center,0);
+                    &:hover{
+                        background-color: white;
+                        border: 1px solid teal;
+                        color: teal;
+                        transform: scale(0.88);
+                        box-shadow: 0 4px 5px #0000;                        
+                    }
+                }
+            }
+        }
+    }
+
+    //endnavbar
+
+    //home
+    .home{
+        margin: rem(50) 0 0;
+        .post{
+            @include dflex(row, space-between, unset,rem(30));
+            padding: rem(10);
+            margin: 0 0 rem(80);
+           
+            &:nth-child(2n+1){                            
+                @include dflex(row-reverse, space-between, unset, rem(30));
+                .post-content .button{
+                    @include dflex(row-reverse, unset, unset, 0);
+                }
+            }
+            &:nth-child(2n){                            
+                .post-content .button{
+                    @include dflex(row, unset, unset, 0);
+                }
+            }
+            .post-image{
+                flex: 1;
+                height: 300px;
+                position: relative;
+
+                &::after{
+                    content:"";
+                    position: absolute;
+                    top: -20px;
+                    left: -20px;
+                    width: 100%;
+                    height: 100%;
+                    z-index: -1;
+                    background-color: $lightblue;
+                }
+                img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            .post-content{
+                flex: 2;
+                padding: rem(10);
+                @include dflex(column, space-between, unset,rem(10));
+                .content{
+                    font-size: 1.4rem;
+                    text-align: justify;
+                    line-height: 36px;
+                    font-weight: 300;
+                    color: #555;
+                }
+                
+                .button{
+                    @include dflex(row, flex-end, center, 0);
+                    button{
+                        width: max-content;
+                        padding: rem(8) rem(25);
+                        background-color: transparent;
+                        color: teal;
+                        font-weight: bold;
+                        border: 1px solid teal;
+                        transition: $transition;
+                        border-radius: 4px;
+                        cursor: pointer;
+                        &:hover{
+                            background-color: teal;
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    //end home
+
+
+    //footer
+    .footer{
+        margin: rem(50) 0 0;
+        background-color: #999;
+        opacity: 0.7;
+        height: 120px;
+        @include dflex(row, space-around, center,0);
+        &__left{
+        }
+        &__right{
+            
+        }
+    }    
+    //end footer
+    //postItem
+    .postItem{
+        margin: 0 0 rem(80);
+        &__poster{
+            height: rem(250);
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .title{
+            color: #555;
+            font-size: 2rem;
+            margin: rem(10) 0;
+        }
+        button{
+            background-color: transparent;
+            border: 1px solid teal;
+            width: max-content;
+            padding: 8px 25px;
+            color: teal;
+            transition: $transition;
+            &:hover{
+                background-color: teal;
+                color: white;
+            }
+        }
+    }
+    //single
+    .single{
+        margin: rem(50) 0 0;
+        @include dflex(row, space-between,top, rem(30));
+        &__left{
+            flex:4;
+            &__image{
+                height: rem(300);
+                img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+            &__user{
+                margin: rem(20) 0 0;
+                padding: rem(10);
+                @include dflex(row, unset, center, rem(10));
+                .user{
+                    width: max-content;
+                    img{
+                        width: rem(50);
+                        height: rem(50);
+                        border-radius: 50%;
+                        box-shadow: 0 2px 3ps #0000;
+                    }
+                }
+                .meta{
+                    .username{
+                        font-size: 0.9rem;
+                        font-weight: bold;
+                        margin: 0 0 rem(5);
+                    }
+                    .date{
+                        color: #555;
+                        font-size: 0.8rem;
+                    }
+
+                }
+                .icones{
+                    @include dflex(row,unset, center, rem(5));
+                    margin-left: auto;
+                    font-size: 1rem;
+                    i{
+                        border-radius: 50%;
+                        height: 28px;
+                        width: 28px;
+                        color:white;
+                        @include dflex(row, center, center, 0);
+                        transition: $transition;
+                        cursor: pointer;
+                        
+
+                        &:first-child{
+                        background-color: blue;
+                        }
+                        &:last-child {
+                        background-color: red;
+                        }
+                        &:hover{
+                        background-color: white;
+                        color: black;
+                        border: 1px solid teal;
+                        }
+                    }
+                }
+            }
+            .title{
+                margin: rem(20) 0 0;
+            }
+            .content{
+                margin: rem(50) 0 0;                
+                text-align: justify;
+                line-height: 32px;
+            }
+        }
+        &__right{
+            flex:1;
+            min-width: 360px;            
+        }
+    }
+    //end single
+    //write
+    .writePost{
+        margin: rem(50) 0 0;
+        @include dflex(row, space-between, unset, rem(10));
+        &__left{
+            @include dflex(column, unset, unset, rem(20));
+            flex: 2;
+            input{
+                padding: rem(10);
+                border: 1px solid $lightblue;
+                outline: none;
+                
+            }
+            .editor-wrapper{
+                height: rem(350);
+                overflow: scroll;
+                overflow-x: hidden;
+                border: 1px solid lightgray;
+                .editor{
+                    height: 100%;
+                    border: none;    
+                }
+            }
+        }
+        &__right{
+            flex: 1;            
+            @include dflex(column, space-between, unset,0);
+            .option{
+                border: 1px solid lightgrey;
+                padding: rem(10);
+                @include dflex(column, center, space-between,0);
+                color: #555;
+                h1{
+                    font-size: 1.5rem;
+                    margin: rem(10) 0;
+                }
+                .option-container{
+                    @include dflex(row, center, space-between,rem(5));                    
+                    .option__left{
+                        @include dflex(column, center, space-between,rem(5));                
+                        flex:1;
+                        .link{
+                            text-decoration: underline;
+                            cursor: pointer;
+                            color: lightseagreen;
+                            font-weight: bold;                
+                        }                     
+                        .link-name{
+                            font-size: 0.9rem;
+                            color: red;
+                            @include dflex(row, space-between,center,0);                
+                            span{                                
+                                @include dflex(row, center, center,0);                
+                                color: red;      
+                                font-size: 1rem;                          
+                                font-weight: bold;
+                                cursor: pointer;
+                                transition: $transition;
+                                &:hover{
+                                    color: black;
+                                }
+                            }
+                        }
+                    }
+                    .option__right{
+                        padding: rem(10);
+                        flex:1;
+                        @include dflex(row, flex-end ,flex-start,rem(10));                    
+                        
+                        img{
+                            max-width: 60%;
+                            min-width: 160px;
+                            height: 150px;
+                            object-fit: cover;
+                            border: 1px solid gray;
+                        }
+                    }
+                }
+                .option-item{
+                    @include dflex(row, flex-start, center, rem(10));
+                    color: lightseagreen;
+                }            
+                .buttons{
+                    @include dflex(row, space-between, center,rem(20));
+                    :first-child{
+                        flex: 1;
+                        background-color: teal;
+                        padding: rem(7) rem(15);
+                        color: white;
+                        cursor: pointer;
+                        transition: $transition;
+                        border: 1px solid teal;
+                        &:hover{
+                            box-shadow: 0 3px 2px teal;
+                            transform: scale(0.96);
+                        } 
+                    }
+                    :last-child{
+                        flex: 1;
+                        background-color: transparent;    
+                        color: teal;
+                        cursor: pointer;
+                        transition: $transition;
+                        border: 1px solid teal;
+                        padding: rem(7) rem(15);
+                        &:hover{
+                            box-shadow: 0 3px 2px teal;
+                            transform: scale(0.92);
+                        } 
+                    }
+                }
+            }
+        }
+    }
+   }
+}

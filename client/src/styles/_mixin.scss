@@ -1,0 +1,9 @@
+
+
+@mixin dflex($dir, $jc, $ai, $gap){
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $jc;
+    align-items: $ai;
+    gap: $gap;
+}
